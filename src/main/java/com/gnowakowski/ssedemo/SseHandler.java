@@ -37,6 +37,7 @@ public class SseHandler {
                         log.info("channel is empty {}", id);
                     }
                 });
+        publish(id, new EventDto(EventType.MESSAGE, uuid + " was removed from the list of clients"));
         log.info("number of channels: {} | number of clients: {}", sinks.size(), sinks.get(id).values().size());
     }
 
