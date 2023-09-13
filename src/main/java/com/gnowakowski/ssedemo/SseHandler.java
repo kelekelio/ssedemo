@@ -15,7 +15,7 @@ public class SseHandler {
     private final ConcurrentHashMap<Long, ConcurrentHashMap<UUID, Consumer<EventDto>>> sinks = new ConcurrentHashMap<>();
 
     public void subscribe(Long id, UUID uuid, Consumer<EventDto> listener) {
-        log.info("creating sink for {}", uuid);
+        log.info("creating sink for  {}", uuid);
         sinks.computeIfAbsent(id, k -> new ConcurrentHashMap<>()).put(uuid, listener);
         log.info("client added to {}", id);
         listener.accept(new EventDto(EventType.WELCOME, null));
